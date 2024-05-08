@@ -1,0 +1,33 @@
+<div class="wrapper">
+    <div class="inner">
+        <img src="images/image-1.png" alt="" class="image-1">
+        <form>
+            <h3>New Account?</h3>
+            <div class="form-holder">
+                <span class="lnr lnr-user"></span>
+                <input type="text" class="form-control" placeholder="First Name" [(ngModel)]="userRegister.firstName" name="firstName">
+            </div>
+            <div class="form-holder">
+                <span class="lnr lnr-phone-handset"></span>
+                <input type="text" class="form-control" placeholder="Last Name" [(ngModel)]="userRegister.lastName" name="lastName">
+            </div>
+            <div class="form-holder">
+                <span class="lnr lnr-envelope"></span>
+                <input type="email" class="form-control" placeholder="Email Address" [(ngModel)]="userRegister.email" name="email">
+            </div>
+            <div class="form-holder">
+                <span class="lnr lnr-lock"></span>
+                <input type="password" class="form-control" placeholder="Password" [(ngModel)]="userRegister.password" name="password">
+            </div>
+            <div class="form-holder">
+                <span class="lnr lnr-lock"></span>
+                <input type="password" class="form-control" placeholder="Confirm Password">
+            </div>
+            <button (click)="register()">
+                <span>Register</span>
+            </button>
+        </form>
+        <img src="images/image-2.png" alt="" class="image-2">
+    </div>
+
+</div>

@@ -3,16 +3,44 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './auth/login/login.component';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { RegisterComponent } from './auth/register/register.component';
+import { FormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './dashboard/home/home.component';
+import { EditprofileComponent } from './auth/editprofile/editprofile.component';
+import { AuthInterceptor } from './auth.interceptor';
+import { LogoutComponent } from './auth/logout/logout.component';
+import { NewProductComponent } from './dashboard/new-product/new-product.component';
+import { Error404Component } from './dashboard/error404/error404.component';
+import { ProductIdComponent } from './dashboard/product-id/product-id.component';
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LogoutComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
+    EditprofileComponent,
+    NewProductComponent,
+    Error404Component,
+    ProductIdComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    AlertModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } // HTTP Interceptor configuration
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

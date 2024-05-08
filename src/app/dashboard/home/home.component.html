@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+            <div class="position-sticky">
+                <div class="list-group">
+                    <a href="/home" class="list-group-item list-group-item-action active" aria-current="true">
+                        Home
+                    </a>
+                    <a href="/profile" class="list-group-item list-group-item-action">Profile</a>
+                    <a href="/product/new" class="list-group-item list-group-item-action">New product</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main content -->
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <!-- Button -->
+        <div class="row justify-content-center mt-2">
+            <div class="col-auto">
+                <button type="button" class="btn btn-secondary" [routerLink]="'/product/new'">Create new
+                    product</button>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <table class="table align-middle mb-0 bg-white mt-2">
+            <thead class="bg-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products">
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt=""
+                                style="width: 45px; height: 45px" class="rounded-circle" />
+                            <div class="ms-3">
+                                <p class="fw-bold mb-1">{{product.name}}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <p class="fw-normal mb-1">{{product.description}}</p>
+                    </td>
+                    <td>
+                        <p class="fw-normal mb-1">{{product.price}}</p>
+                    </td>
+                    <td><button type="button" class="btn btn-primary"
+                            [routerLink]="'/product/' + product.id">Edit</button>
+
+                        <button type="button" class="btn btn-danger ms-3"
+                            (click)="deleteProduct(product.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <!-- </div> -->
+</div>

@@ -1,0 +1,21 @@
+<div class="wrapper">
+    <div class="inner">
+        <img src="images/image-1.png" alt="" class="image-1">
+        <form>
+            <h3>Login</h3>
+            <div class="form-holder">
+                <span class="lnr lnr-user"></span>
+                <input type="email" name="email" placeholder="Email Address" [(ngModel)]="userlogin.email" class="form-control">
+            </div>
+            <div class="form-holder">
+                <span class="lnr lnr-lock"></span>
+                <input type="password" name="password" placeholder="Password" [(ngModel)]="userlogin.password" class="form-control">
+            </div>
+            <button  (click)="login()">
+                <span>Login</span>
+            </button>
+        </form>
+        <img src="images/image-2.png" alt="" class="image-2">
+    </div>
+
+</div>
