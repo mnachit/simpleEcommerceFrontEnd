@@ -14,8 +14,8 @@ export class HomeService {
 
   constructor(private http: HttpClient, private tokenservice : TokenServiceService, private authorizedGuard: AuthorizedGuardService) { }
 
-  getProducts(): Observable<{message: String, result: product[]}> {
-    return this.http.get<{message: String, result: product[]}>(apiUrl+"all");
+  getProducts(id: number): Observable<{message: String, result: product[]}> {
+    return this.http.get<{message: String, result: product[]}>(apiUrl+"all/"+id);
   }
 
   createProduct(product: product): Observable<{message: string}> {

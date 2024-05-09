@@ -13,18 +13,22 @@ import { HomeService } from 'src/app/service/dash/home.service';
 export class HomeComponent {
   products!: product[];
   checkRole: boolean = true;
+  id: number = 0;
   constructor(private home:HomeService, private router: Router,
     private allert: AllertService, private token: AuthorizedGuardService) { }
 
   ngOnInit(): void {
-    this.home.getProducts().subscribe(
+    this.id = this.token.getIdFromToken();
+    this.home.getProducts(this.id).subscribe(
       (data: { message: String, result: product[] }) => {
         this.products = data.result;
         console.log(this.products);
         
       },
       (error: { message: string }) => {
-        this.allert.showError("Products not found", 2000);
+        // this.allert.showError("Products not found", 2000);
+        console.log();
+        
       }
     );
 
