@@ -38,10 +38,9 @@ export class ProductIdComponent implements OnInit{
   }
 
   updateProduct(): void {
-    this.home.updateProduct().subscribe(
+    this.home.updateProduct(this.id, this.product).subscribe(
       (data: { message: string }) => {
         this.allert.showSuccess(data.message, 2000);
-        this.router.navigate(['dashboard']);
       },
       (error: { message: string }) => {
         console.error(this.product);

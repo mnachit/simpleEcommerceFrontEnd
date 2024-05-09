@@ -29,7 +29,7 @@ export class HomeService {
   getProductById(id: string): Observable<{message: string, result: product}> {
     return this.http.get<{message: string, result: product}>(apiUrl+id);
   }
-  updateProduct(id: number): Observable<{message: string}> {
+  updateProduct(id: string, product: product): Observable<{message: string}> {
     return this.http.put<{message: string}>(apiUrl+id, product);
   }
 }

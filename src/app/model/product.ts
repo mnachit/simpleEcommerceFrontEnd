@@ -6,4 +6,5 @@ export class product {
     description!: string;
     price!: number;
     orders!: Order[];
+    userId!: number;
 }

@@ -8,7 +8,8 @@
                         Home
                     </a>
                     <a href="/profile" class="list-group-item list-group-item-action">Profile</a>
-                    <a href="/product/new" class="list-group-item list-group-item-action active">New product</a>
+                    <a href="new/product/" class="list-group-item list-group-item-action active">New product</a>
+                    <a href="/logout" class="list-group-item list-group-item-action">Logout</a>
                 </div>
             </div>
         </nav>
@@ -18,12 +19,13 @@
             <form>
                 <div class="mb-3">
                     <label for="productName" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="productName" placeholder="Enter product name" name="name" [(ngModel)]="product.name" required>
+                    <input type="text" class="form-control" id="productName" placeholder="Enter product name" name="name"[(ngModel)]="product.name" required>
                 </div>
                 <div class="mb-3">
                     <label for="productDescription" class="form-label">Description</label>
                     <textarea class="form-control" id="productDescription" rows="3"
-                        placeholder="Enter product description" [(ngModel)]="product.description" name="description" required></textarea>
+                        placeholder="Enter product description"
+                         name="description" [(ngModel)]="product.description" required></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="productPrice" class="form-label">Price</label>

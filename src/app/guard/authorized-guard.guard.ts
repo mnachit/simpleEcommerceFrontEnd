@@ -38,4 +38,17 @@ export class AuthorizedGuardService {
       return id;
     }
   }
+
+  getRoleFromToken(): any {
+    // Check if the token exists
+    if (this.token) {
+      // Decode the JWT token
+      const decodedToken: any = jwtDecode(this.token);
+
+      // Extract the role from the decoded token
+      const role: string = decodedToken.role;
+
+      return role;
+    }
+  }
 }

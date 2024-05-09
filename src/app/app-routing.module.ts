@@ -14,11 +14,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent, canActivate: [checkTokenGuard] },
-  // { path: '', component: HomeComponent, canActivate: [checkTokenGuard] },
   { path: 'product/:id', component: ProductIdComponent, canActivate: [checkTokenGuard]},
+  { path: 'new/product', component: NewProductComponent, canActivate: [checkTokenGuard] },
   { path: 'profile', component: EditprofileComponent, canActivate: [checkTokenGuard] },
   { path: 'logout', component: LogoutComponent, canActivate: [checkTokenGuard] },
-  { path: 'product/new', component: NewProductComponent, canActivate: [checkTokenGuard] },
   { path: '**', component: Error404Component },
 ];
 

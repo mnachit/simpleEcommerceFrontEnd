@@ -8,7 +8,8 @@
                         Home
                     </a>
                     <a href="/profile" class="list-group-item list-group-item-action">Profile</a>
-                    <a href="/product/new" class="list-group-item list-group-item-action">New product</a>
+                    <a href="/new/product" class="list-group-item list-group-item-action">New product</a>
+                    <a href="/logout" class="list-group-item list-group-item-action">Logout</a>
                 </div>
             </div>
         </nav>
@@ -17,9 +18,9 @@
     <!-- Main content -->
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <!-- Button -->
-        <div class="row justify-content-center mt-2">
+        <div class="row justify-content-center mt-2" *ngIf="checkRole">
             <div class="col-auto">
-                <button type="button" class="btn btn-secondary" [routerLink]="'/product/new'">Create new
+                <button type="button" class="btn btn-secondary" [routerLink]="'/new/product'">Create new
                     product</button>
             </div>
         </div>

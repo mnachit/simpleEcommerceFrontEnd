@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthorizedGuardService } from 'src/app/guard/authorized-guard.guard';
 import { product } from 'src/app/model/product';
 import { AllertService } from 'src/app/service/dash/allert.service';
 import { HomeService } from 'src/app/service/dash/home.service';
@@ -11,8 +12,9 @@ import { HomeService } from 'src/app/service/dash/home.service';
 })
 export class HomeComponent {
   products!: product[];
+  checkRole: boolean = true;
   constructor(private home:HomeService, private router: Router,
-    private allert: AllertService) { }
+    private allert: AllertService, private token: AuthorizedGuardService) { }
 
   ngOnInit(): void {
     this.home.getProducts().subscribe(
@@ -25,6 +27,10 @@ export class HomeComponent {
         this.allert.showError("Products not found", 2000);
       }
     );
+
+    if (this.token.getRoleFromToken() !== 'ADMIN'){
+      this.checkRole = false;
+    }
   }
 
   deleteProduct(id: number): void {
