@@ -7,6 +7,7 @@ import { product } from 'src/app/model/product';
 
 
 const apiUrl = "http://localhost:8070/api/v1/rest/product/";
+//ss
 @Injectable({
   providedIn: 'root'
 })
