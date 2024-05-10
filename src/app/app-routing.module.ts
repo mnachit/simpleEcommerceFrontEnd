@@ -9,15 +9,16 @@ import { LogoutComponent } from './auth/logout/logout.component';
 import { NewProductComponent } from './dashboard/new-product/new-product.component';
 import { Error404Component } from './dashboard/error404/error404.component';
 import { ProductIdComponent } from './dashboard/product-id/product-id.component';
+import { checkLoginUGuard } from './guard/check-login-u.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent },
-  { path: 'home', component: HomeComponent, canActivate: [checkTokenGuard] },
+  { path: 'home', component: HomeComponent, },
   { path: 'product/:id', component: ProductIdComponent, canActivate: [checkTokenGuard]},
   { path: 'new/product', component: NewProductComponent, canActivate: [checkTokenGuard] },
-  { path: 'profile', component: EditprofileComponent, canActivate: [checkTokenGuard] },
-  { path: 'logout', component: LogoutComponent, canActivate: [checkTokenGuard] },
+  { path: 'profile', component: EditprofileComponent, canActivate: [checkLoginUGuard] },
+  { path: 'logout', component: LogoutComponent, canActivate: [checkLoginUGuard] },
   { path: '**', component: Error404Component },
 ];
 

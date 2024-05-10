@@ -19,6 +19,7 @@ export class ProductIdComponent implements OnInit{
     private allert: AllertService,
     private route: ActivatedRoute,
     private router: Router,
+    private token: AuthorizedGuardService
   ) {}
 
   getProductById(id: string): void {
@@ -38,6 +39,7 @@ export class ProductIdComponent implements OnInit{
   }
 
   updateProduct(): void {
+    this.product.userId = this.token.getIdFromToken();
     this.home.updateProduct(this.id, this.product).subscribe(
       (data: { message: string }) => {
         this.allert.showSuccess(data.message, 2000);

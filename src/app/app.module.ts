@@ -15,6 +15,7 @@ import { LogoutComponent } from './auth/logout/logout.component';
 import { NewProductComponent } from './dashboard/new-product/new-product.component';
 import { Error404Component } from './dashboard/error404/error404.component';
 import { ProductIdComponent } from './dashboard/product-id/product-id.component';
+import { Location } from '@angular/common';
 
 
 
@@ -38,8 +39,8 @@ import { ProductIdComponent } from './dashboard/product-id/product-id.component'
     AlertModule.forRoot()
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } // HTTP Interceptor configuration
-
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    Location
   ],
   bootstrap: [AppComponent]
 })
