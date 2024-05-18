@@ -1,67 +1,67 @@
-<div class="container-fluid">
-    <div class="row">
-        <!-- Sidebar -->
-        <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
-            <div class="position-sticky">
+<div class="container-fluid row ">
+    <div class="col-md-2  vh-100 bg-body-tertiary shadow">
+        <nav id="sidebar" class="d-md-block bg-light sidebar">
+            <div class="p-3 border mt-2 rounded bg-white">
+                <h3>Simple <span class="text-primary fw-bold">Ecommerce</span></h3>
+            </div>
+            <div class="position-sticky mt-5">
                 <div class="list-group">
-                    <a href="/home" class="list-group-item list-group-item-action active" aria-current="true">
-                        Home
-                    </a>
-                    <a href="/profile" class="list-group-item list-group-item-action">Profile</a>
-                    <a href="/new/product" class="list-group-item list-group-item-action">New product</a>
-                    <a  class="list-group-item list-group-item-action">Getion User</a>
-                    <a href="/logout" class="list-group-item list-group-item-action">Logout</a>
+                    <app-sidebar></app-sidebar>
                 </div>
             </div>
         </nav>
     </div>
 
     <!-- Main content -->
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        <!-- Button -->
-        <div class="row justify-content-center mt-2" *ngIf="checkRole">
-            <div class="col-auto">
-                <button type="button" class="btn btn-secondary" [routerLink]="'/new/product'">Create new
-                    product</button>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-5">
+        <div class="container rounded bg-white mt-5 mb-5 border shadow">
+            <div class="row">
+                <!-- Button -->
+                <div class="row justify-content-center mt-2" *ngIf="checkRole">
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-secondary" [routerLink]="'/new/product'">Create new
+                            product</button>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <table class="table align-middle mb-0 bg-white mt-4">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of products">
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt=""
+                                        style="width: 45px; height: 45px" class="rounded-circle" />
+                                    <div class="ms-3">
+                                        <p class="fw-bold mb-1">{{product.name}}</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">{{product.description}}</p>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">{{product.price}}</p>
+                            </td>
+                            <td><button type="button" class="btn btn-primary"
+                                    [routerLink]="'/product/' + product.id">Edit</button>
+
+                                <button type="button" class="btn btn-danger ms-3"
+                                    (click)="deleteProduct(product.id)">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-
-        <!-- Table -->
-        <table class="table align-middle mb-0 bg-white mt-2">
-            <thead class="bg-light">
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let product of products">
-                    <td>
-                        <div class="d-flex align-items-center">
-                            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt=""
-                                style="width: 45px; height: 45px" class="rounded-circle" />
-                            <div class="ms-3">
-                                <p class="fw-bold mb-1">{{product.name}}</p>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <p class="fw-normal mb-1">{{product.description}}</p>
-                    </td>
-                    <td>
-                        <p class="fw-normal mb-1">{{product.price}}</p>
-                    </td>
-                    <td><button type="button" class="btn btn-primary"
-                            [routerLink]="'/product/' + product.id">Edit</button>
-
-                        <button type="button" class="btn btn-danger ms-3"
-                            (click)="deleteProduct(product.id)">Delete</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
     </main>
     <!-- </div> -->
 </div>

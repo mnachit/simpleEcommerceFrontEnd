@@ -1,41 +1,40 @@
-<div class="container-fluid">
-    <div class="row">
-        <!-- Sidebar -->
-        <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
-            <div class="position-sticky">
+<div class="container-fluid row ">
+    <div class="col-md-2  vh-100 bg-body-tertiary shadow">
+        <nav id="sidebar" class="d-md-block bg-light sidebar">
+            <div class="p-3 border mt-2 rounded bg-white">
+                <h3>Simple <span class="text-primary fw-bold">Ecommerce</span></h3>
+            </div>
+            <div class="position-sticky mt-5">
                 <div class="list-group">
-                    <a href="/home" class="list-group-item list-group-item-action active" aria-current="true">
-                        Home
-                    </a>
-                    <a href="/profile" class="list-group-item list-group-item-action">Profile</a>
-                    <a href="/product/new" class="list-group-item list-group-item-action">New product</a>
-                    <a href="/logout" class="list-group-item list-group-item-action">Logout</a>
+                    <app-sidebar></app-sidebar>
                 </div>
             </div>
         </nav>
     </div>
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        <div class="container rounded bg-white mt-5 mb-5 bg-light">
-            <form>
-                <div class="mb-3">
-                    <label for="productName" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="productName" placeholder="Enter product name"
-                        name="name" [(ngModel)]="product.name" required>
-                </div>
-                <div class="mb-3">
-                    <label for="productDescription" class="form-label">Description</label>
-                    <textarea class="form-control" id="productDescription" rows="3"
-                        placeholder="Enter product description" [(ngModel)]="product.description" name="description"
-                        required></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="productPrice" class="form-label">Price</label>
-                    <input type="number" class="form-control" id="productPrice" name="price"
-                        placeholder="Enter product price" [(ngModel)]="product.price" required>
-                </div>
-                <button type="submit" class="btn btn-primary" (click)="updateProduct()">Update </button>
-            </form>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-5">
+        <div class="container rounded bg-white mt-5 mb-5 border shadow">
+            <div class="row">
+                <form>
+                    <div class="mb-3">
+                        <label for="productName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="productName" placeholder="Enter product name"
+                            name="name" [(ngModel)]="product.name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="productDescription" class="form-label">Description</label>
+                        <textarea class="form-control" id="productDescription" rows="3"
+                            placeholder="Enter product description" [(ngModel)]="product.description" name="description"
+                            required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="productPrice" class="form-label">Price</label>
+                        <input type="number" class="form-control" id="productPrice" name="price"
+                            placeholder="Enter product price" [(ngModel)]="product.price" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" (click)="updateProduct()">Update </button>
+                </form>
 
+            </div>
         </div>
     </main>
 </div>
