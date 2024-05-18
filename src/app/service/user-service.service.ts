@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserUserModel } from '../model/user-model';
 import { Observable, catchError, tap, throwError } from 'rxjs';
 import { TokenServiceService } from './token-service.service';
 import { AuthorizedGuardService } from '../guard/authorized-guard.guard';
+import { User } from '../model/User';
 
 const apiUrl = "http://localhost:8070/api/v1/rest/";
 @Injectable({
@@ -65,7 +66,14 @@ export class UserServiceService {
     return this.http.get<{message: String, result: UserUserModel}>(`${apiUrl}user/`+id);
   }
 
-  updateUser(user: UserUserModel, id: string): Observable<{message: string, result: UserUserModel, errors: string, errorMap: string[]}> {
-    return this.http.put<{message: string, result: UserUserModel, errors: string, errorMap: string[]}>(`${apiUrl}update/user/`+id, user);
+  //Http failure response for http://localhost:8070/api/v1/rest/update/user/1: 403 OK
+  token = this.tokenservice.getToken();
+
+  // updateUser(user: UserUserModel, id: number): Observable<{message: string, result: UserUserModel, errors: string, errorMap: string[]}> {
+  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+  //   return this.http.put<{message: string, result: UserUserModel, errors: string, errorMap: string[]}>(`${apiUrl}update/user/`+id, user, { headers });
+  // }
+  updateUser(user: UserUserModel, id: number): Observable<{message: string, result: UserUserModel, errors: string, errorMap: string[]}> {
+    return this.http.post<{message: string, result: UserUserModel, errors: string, errorMap: string[]}>(`${apiUrl}update/user/`+id, user);
   }
 }

@@ -1,59 +1,48 @@
-<div class="container-fluid">
-    <div class="row">
-        <!-- Sidebar -->
-        <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
-            <div class="position-sticky">
-                <div class="list-group">
-                    <a href="/home" class="list-group-item list-group-item-action" aria-current="true">
-                        Home
-                    </a>
-                    <a href="/profile" class="list-group-item list-group-item-action active">Profile</a>
-                    <a href="/new/product" class="list-group-item list-group-item-action">New product</a>
-                    <a href="/logout" class="list-group-item list-group-item-action">Logout</a>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        <div class="container rounded bg-white mt-5 mb-5 bg-light">
+<div class="container-fluid row ">
+    <app-sidebar></app-sidebar>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-5">
+        <div class="container rounded bg-white mt-5 mb-5 border shadow">
             <div class="row">
-                <div class="col-md-3 border-right">
+                <div class="col-md-3 border-end border-3">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img
                             class="rounded-circle mt-5" width="150px"
                             src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span
-                            class="font-weight-bold">{{user.firstName}} {{user.lastName}}</span><span
+                            class="fw-bold fs-4">{{user.firstName}} {{user.lastName}}</span><span
                             class="text-black-50">{{user.email}}</span><span>
                         </span></div>
                 </div>
-                <div class="col-md-5 border-right">
-                    <div class="p-3 py-5">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="text-right">Profile Settings</h4>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-md-6"><label class="labels">First Name</label><input type="text"
-                                    class="form-control" placeholder="" name="firstName" [(ngModel)]="user.firstName">
+                <div class="col-md-5 row" style="width: 50vw;">
+                    <div class=" border-right">
+                        <div class="p-3 py-5">
+                            <div class="d-flex justify-content-center  mb-5">
+                                <h4 class="text-right fw-bold">Profile Settings</h4>
                             </div>
-                            <div class="col-md-6"><label class="labels">Last Name</label><input type="text"
-                                    class="form-control" placeholder="" name="lastName" [(ngModel)]="user.lastName">
+                            <div class="row mt-2">
+                                <div class="col-md-6"><label class="labels">First Name</label><input type="text"
+                                        class="form-control" placeholder="" name="firstName" [(ngModel)]="user.firstName">
+                                </div>
+                                <div class="col-md-6"><label class="labels">Last Name</label><input type="text"
+                                        class="form-control" placeholder="" name="lastName" [(ngModel)]="user.lastName">
+                                </div>
+                                <div class="col-md-6"><label class="labels">Phone</label><input type="tel"
+                                        class="form-control" placeholder="" name="phone" [(ngModel)]="user.phone"></div>
+                                <div class="col-md-6"><label class="labels">Email</label><input type="email"
+                                        class="form-control" placeholder="" name="email" [(ngModel)]="user.email"></div>
                             </div>
-                            <div class="col-md-6"><label class="labels">Phone</label><input type="tel"
-                                    class="form-control" placeholder="" name="phone" [(ngModel)]="user.phone"></div>
-                            <div class="col-md-6"><label class="labels">Email</label><input type="email"
-                                    class="form-control" placeholder="" name="email" [(ngModel)]="user.email"></div>
+                            <!-- <div class="row mt-2">
+                        <div class="col-md-6"><label class="labels">Password</label><input type="password" class="form-control"
+                                placeholder="" name="Password"></div>
+                    </div> -->
                         </div>
-                        <!-- <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">Password</label><input type="password" class="form-control"
-                            placeholder="" name="Password"></div>
-                </div> -->
+                    </div>
+                    <div class="col-md-4 d-flex justify-content-end vw-100">
+                        <div class="p-3 py-5">
+                            <button type="button" class="btn btn-outline-primary px-5" (click)="updateUser()">Save</button>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="p-3 py-5">
-                        <button type="button" class="btn btn-primary" (click)="updateUser()">Edit</button>
-                    </div>
                 </div>
-            </div>
+                
         </div>
     </main>
 </div>

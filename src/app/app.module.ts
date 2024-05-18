@@ -16,6 +16,7 @@ import { NewProductComponent } from './dashboard/new-product/new-product.compone
 import { Error404Component } from './dashboard/error404/error404.component';
 import { ProductIdComponent } from './dashboard/product-id/product-id.component';
 import { Location } from '@angular/common';
+import { SidebarComponent } from './home/sidebar/sidebar.component';
 
 
 
@@ -29,7 +30,8 @@ import { Location } from '@angular/common';
     EditprofileComponent,
     NewProductComponent,
     Error404Component,
-    ProductIdComponent
+    ProductIdComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

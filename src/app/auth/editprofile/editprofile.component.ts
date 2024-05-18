@@ -14,11 +14,12 @@ export class EditprofileComponent {
   email!: string;
 
   user: UserUserModel = new UserUserModel();
+  userM!: User;
   constructor(private UserService: UserServiceService,
     private authorizedGuardService: AuthorizedGuardService,
     private allert: AllertService
   ) {
-   }
+  }
 
   // getUserByEmail(): void {
   //   this.UserService.getUserByEmail().subscribe(
@@ -39,25 +40,21 @@ export class EditprofileComponent {
   }
 
   updateUser(): void {
-    if (this.user) {
-      this.UserService.updateUser(this.user!, this.authorizedGuardService.getIdFromToken()).subscribe(
-        (data: { message: string, result: UserUserModel, errors: string, errorMap: string[] }) => {
-          console.log(data.message);
-          this.allert.showSuccess(data.message, 2000);
-          // this.getUserByEmail();
-          this.getUserById();
-        },
-        (error: { message: string; errorMap: string }) => {
-          console.log(error.message);
-          this.allert.showError(error.message, 5000);
-        }
-      );
-    }
-    
+    this.UserService.updateUser(this.user, 1).subscribe(
+      (data: { message: string, result: UserUserModel, errors: string, errorMap: string[]}) => {
+        console.log(data.message);
+        this.allert.showSuccess(data.message, 2000);
+        this.getUserById();
+      },
+      (error: { message: string; errorMap: string }) => {
+        console.log(error.message);
+        this.allert.showError(error.message, 5000);
+      }
+    );
+
   }
 
   ngOnInit(): void {
-    // this.getUserByEmail();
     this.getUserById();
   }
 }
