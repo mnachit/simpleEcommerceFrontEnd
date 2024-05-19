@@ -23,7 +23,8 @@ export class RegisterComponent implements OnInit{
     this.loginService.register(this.userRegister).subscribe(
       (data: { message: string }) => {
         this.allert.showSuccess(data.message, 2000);
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['home']);
+        window.location.reload();
       },
       (error: { message: string }) => {
         console.error(this.userRegister);

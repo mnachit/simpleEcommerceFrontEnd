@@ -5,4 +5,5 @@ export class UserUserModel {
     phone!: number;
     email!: string;
     password!: string;
+    roleUser!: string;
 }

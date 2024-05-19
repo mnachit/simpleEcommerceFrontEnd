@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthorizedGuardService } from 'src/app/guard/authorized-guard.guard';
 import { product } from 'src/app/model/product';
+import { UserUserModel } from 'src/app/model/user-model';
 import { AllertService } from 'src/app/service/dash/allert.service';
 import { HomeService } from 'src/app/service/dash/home.service';
+import { UserServiceService } from 'src/app/service/user-service.service';
 
 @Component({
   selector: 'app-home',
@@ -13,12 +15,15 @@ import { HomeService } from 'src/app/service/dash/home.service';
 export class HomeComponent {
   products!: product[];
   checkRole: boolean = true;
+  user: UserUserModel = new UserUserModel();
   id: number = 0;
   constructor(private home:HomeService, private router: Router,
-    private allert: AllertService, private token: AuthorizedGuardService) { }
+    private allert: AllertService, private token: AuthorizedGuardService, private UserService: UserServiceService
+  ) { }
 
   ngOnInit(): void {
     this.id = this.token.getIdFromToken();
+    this.getUserById();
     this.home.getProducts(this.id).subscribe(
       (data: { message: String, result: product[] }) => {
         this.products = data.result;
@@ -35,6 +40,15 @@ export class HomeComponent {
     if (this.token.getRoleFromToken() !== 'ADMIN'){
       this.checkRole = false;
     }
+  }
+
+  getUserById(): void {
+    this.UserService.getUserById().subscribe(
+      (data: { message: String, result: UserUserModel }) => {
+        this.user = data.result;
+        console.log(this.user);
+      }
+    );
   }
 
   deleteProduct(id: number): void {

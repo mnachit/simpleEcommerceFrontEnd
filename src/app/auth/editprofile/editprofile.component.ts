@@ -14,7 +14,6 @@ export class EditprofileComponent {
   email!: string;
 
   user: UserUserModel = new UserUserModel();
-  userM!: User;
   constructor(private UserService: UserServiceService,
     private authorizedGuardService: AuthorizedGuardService,
     private allert: AllertService
@@ -40,14 +39,14 @@ export class EditprofileComponent {
   }
 
   updateUser(): void {
-    this.UserService.updateUser(this.user, 1).subscribe(
-      (data: { message: string, result: UserUserModel, errors: string, errorMap: string[]}) => {
+    this.UserService.updateUser(this.user, this.authorizedGuardService.getIdFromToken()).subscribe(
+      (data: { message: string, result: UserUserModel, errors: { message: string[] }, errorMap: string[]}) => {
         console.log(data.message);
         this.allert.showSuccess(data.message, 2000);
         this.getUserById();
       },
-      (error: { message: string; errorMap: string }) => {
-        console.log(error.message);
+      (error: { message: string; errors: { message: string[] } }) => {
+        console.log(error.errors);
         this.allert.showError(error.message, 5000);
       }
     );

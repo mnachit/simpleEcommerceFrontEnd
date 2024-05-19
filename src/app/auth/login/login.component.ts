@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit{
       (data: { message: string }) => {
         this.allert.showSuccess(data.message, 2000);
         this.router.navigate(['home']);
+        window.location.reload();
         console.log(data);
       },
       (error: { message: string }) => {
