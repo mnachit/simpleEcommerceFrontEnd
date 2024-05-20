@@ -7,6 +7,7 @@ import { product } from 'src/app/model/product';
 
 
 const apiUrl = "http://localhost:8070/api/v1/rest/product/";
+const apiUrl1 = "http://localhost:8070/api/v1/rest/products";
 //ss
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,10 @@ export class HomeService {
 
   getProducts(id: number): Observable<{message: String, result: product[]}> {
     return this.http.get<{message: String, result: product[]}>(apiUrl+"all/"+id);
+  }
+
+  getAllProducts(): Observable<{message: String, result: product[]}> {
+    return this.http.get<{message: String, result: product[]}>(apiUrl1);
   }
 
   createProduct(product: product): Observable<{message: string}> {

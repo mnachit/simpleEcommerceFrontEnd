@@ -18,6 +18,7 @@ import { ProductIdComponent } from './dashboard/product-id/product-id.component'
 import { Location } from '@angular/common';
 import { SidebarComponent } from './home/sidebar/sidebar.component';
 import { GestionUserComponent } from './home/gestion-user/gestion-user.component';
+import { ShoppingComponent } from './home/shopping/shopping.component';
 
 
 
@@ -33,7 +34,8 @@ import { GestionUserComponent } from './home/gestion-user/gestion-user.component
     Error404Component,
     ProductIdComponent,
     SidebarComponent,
-    GestionUserComponent
+    GestionUserComponent,
+    ShoppingComponent
   ],
   imports: [
     BrowserModule,

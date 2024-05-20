@@ -11,9 +11,12 @@
                 <a [routerLink]="'/profile'" [ngClass]="{'list-group-item': true, 'list-group-item-action': true, 'py-3': true, 'active': isActive('/profile')}">
                     Profile
                 </a>
-                <a [routerLink]="'/new/product'" [ngClass]="{'list-group-item': true, 'list-group-item-action': true, 'py-3': true, 'active': isActive('/new/product')}">
+                <a [routerLink]="'/Shopping'" *ngIf="Role == 'USER'" [ngClass]="{'list-group-item': true, 'list-group-item-action': true, 'py-3': true, 'active': isActive('/Shopping')}">
+                    Shopping
+                </a>
+                <a [routerLink]="'/new/product'" *ngIf="Role == 'ADMIN'" [ngClass]="{'list-group-item': true, 'list-group-item-action': true, 'py-3': true, 'active': isActive('/new/product')}">
                     New product
-                </a><a [routerLink]="'/gestionUser'" [ngClass]="{'list-group-item': true, 'list-group-item-action': true, 'py-3': true, 'active': isActive('/gestionUser')}">
+                </a><a [routerLink]="'/gestionUser'" *ngIf="Role == 'ADMIN'" [ngClass]="{'list-group-item': true, 'list-group-item-action': true, 'py-3': true, 'active': isActive('/gestionUser')}">
                     Gestion User
                 </a>
                 <a [routerLink]="'/logout'" [ngClass]="{'list-group-item': true, 'list-group-item-action': true, 'py-3': true, 'active': isActive('/logout')}">

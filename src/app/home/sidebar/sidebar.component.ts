@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthorizedGuardService } from 'src/app/guard/authorized-guard.guard';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,7 +9,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private router: Router, private route: ActivatedRoute, private token: AuthorizedGuardService) {}
+  Role: string = this.token.getRoleFromToken();
 
   ngOnInit(): void {}
 

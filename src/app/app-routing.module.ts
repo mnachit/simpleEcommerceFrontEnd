@@ -12,6 +12,7 @@ import { ProductIdComponent } from './dashboard/product-id/product-id.component'
 import { checkLoginUGuard } from './guard/check-login-u.guard';
 import { checkTokenIsExGuard } from './guard/check-token-is-ex.guard';
 import { GestionUserComponent } from './home/gestion-user/gestion-user.component';
+import { ShoppingComponent } from './home/shopping/shopping.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent,canActivate: [checkTokenIsExGuard]},
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'gestionUser', component: GestionUserComponent, canActivate: [checkTokenGuard]},
   { path: 'new/product', component: NewProductComponent, canActivate: [checkTokenGuard] },
   { path: 'profile', component: EditprofileComponent, canActivate: [checkLoginUGuard]  },
+  { path: 'Shopping', component: ShoppingComponent, canActivate: [checkLoginUGuard]  },
   { path: 'logout', component: LogoutComponent, canActivate: [checkLoginUGuard]},
   { path: '**', component: Error404Component },
 ];
